@@ -18,10 +18,10 @@ class Program
         string lowerCaseSelectedWord = selectedWord.ToLower();
         //check the lenghth of the selected word
         int wordLength = selectedWord.Length;
-        string replacer = "";
+        string wordCharacters = "";
 
-        replacer = new String('_', wordLength);
-        Console.WriteLine($"The secret word is within: {replacer}");
+        wordCharacters = new String('_', wordLength);
+        Console.WriteLine($"The secret word is within: {wordCharacters}");
 
         //Initializing variables
         const int LIMIT = 10;
@@ -51,17 +51,17 @@ class Program
             {
                 Console.WriteLine($"The letter {guessedLetter} is not in the secret word");
             }
-            if (i < LIMIT && presentLetter == true)
+            if (presentLetter)
             {
                 Console.WriteLine($"The letter {guessedLetter} is in the secret word");
                 Console.WriteLine($"The letter {guessedLetter} is found at position {position}");
-                char[] currentCharacters = replacer.ToCharArray();
+                char[] currentCharacters = wordCharacters.ToCharArray();
                 currentCharacters[position] = guessedLetter;
-                replacer = string.Concat(currentCharacters);
-                Console.WriteLine($"The progress is  {replacer}");
+                wordCharacters = string.Concat(currentCharacters);
+                Console.WriteLine($"The progress is  {wordCharacters}");
             }
 
-            if (replacer == lowerCaseSelectedWord)
+            if (wordCharacters == lowerCaseSelectedWord)
             {
                 Console.WriteLine($"You guessed  {selectedWord} and it is the correct word, Conglatulation");
                 return;
