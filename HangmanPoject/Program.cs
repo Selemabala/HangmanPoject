@@ -47,7 +47,7 @@ class Program
                     presentLetter = true;
                 }
             }
-            if (i < LIMIT && presentLetter != true)
+            if (presentLetter != true)
             {
                 Console.WriteLine($"The letter {guessedLetter} is not in the secret word");
             }
