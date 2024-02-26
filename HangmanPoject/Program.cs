@@ -11,7 +11,7 @@ class Program
         Console.WriteLine("I hope you will enjoy this game");
 
         // List of words-car names
-        List<string> cars = new List<string> { "Audi", "Benz", "Ford", "Honda", "Hyundai", "Tesla", };
+        List<string> cars = new List<string> { "Audi", "Benz", "Ford", "Honda", "Hyundai", "Tesla"};
         // Way to choose a random word from the list
         Random random = new Random();
         string selectedWord = cars[random.Next(cars.Count)];
@@ -24,7 +24,7 @@ class Program
         Console.WriteLine($"The secret word is within: {wordCharacters}");
 
         //Initializing variables
-        const int LIMIT = 10;
+        const int LIMIT = 15;
         const int START = 0;
         int position = 0;
         char userInputletter;
@@ -35,7 +35,7 @@ class Program
         {
             bool presentLetter = false;
             Console.WriteLine("Hey enter your guess letter");
-            userInputletter = Console.ReadLine()[0];
+            userInputletter = Console.ReadKey().KeyChar;
             guessedLetter = char.ToLower(userInputletter);
             Console.WriteLine($"You guessed {guessedLetter}");
 
@@ -65,11 +65,6 @@ class Program
             {
                 Console.WriteLine($"You guessed  {selectedWord} and it is the correct word, Conglatulation");
                 return;
-            }
-
-            if (i < LIMIT)
-            {
-                Console.WriteLine("Try again");
             }
 
             if (i == LIMIT)
