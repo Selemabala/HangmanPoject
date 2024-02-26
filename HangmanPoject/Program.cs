@@ -54,7 +54,6 @@ class Program
             if (presentLetter)
             {
                 Console.WriteLine($"The letter {guessedLetter} is in the secret word");
-                Console.WriteLine($"The letter {guessedLetter} is found at position {position}");
                 char[] currentCharacters = wordCharacters.ToCharArray();
                 currentCharacters[position] = guessedLetter;
                 wordCharacters = string.Concat(currentCharacters);
