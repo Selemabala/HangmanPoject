@@ -20,7 +20,7 @@ class Program
         int wordLength = selectedWord.Length;
         string wordCharacters = "";
 
-        wordCharacters = new String('_', wordLength);
+        wordCharacters = new String('…', wordLength);
         Console.WriteLine($"The secret word is within: {wordCharacters}");
 
         //Initializing variables
@@ -36,9 +36,17 @@ class Program
             bool presentLetter = false;
             Console.WriteLine("Hey enter your guess letter");
             userInputletter = Console.ReadKey().KeyChar;
-            guessedLetter = char.ToLower(userInputletter);
-            Console.WriteLine($"You guessed {guessedLetter}");
+            if (char.IsLetter(userInputletter))
+            {
+                Console.WriteLine($"\nYou guessed {userInputletter}");
+            }
+            else
+            {
+                Console.WriteLine($"\nYou must enter only letters, you guessed {userInputletter}");
+                continue;
+            }
 
+            guessedLetter = char.ToLower(userInputletter);
             for (check = 0; check < wordLength; check++)
             {
                 if (lowerCaseSelectedWord[check] == guessedLetter)
@@ -47,7 +55,7 @@ class Program
                     presentLetter = true;
                 }
             }
-            if (presentLetter != true)
+            if (!presentLetter)
             {
                 Console.WriteLine($"The letter {guessedLetter} is not in the secret word");
             }
@@ -57,7 +65,7 @@ class Program
                 char[] currentCharacters = wordCharacters.ToCharArray();
                 currentCharacters[position] = guessedLetter;
                 wordCharacters = string.Concat(currentCharacters);
-                Console.WriteLine($"The progress is  {wordCharacters}");
+                Console.WriteLine($"The progress is {wordCharacters}");
             }
 
             if (wordCharacters == lowerCaseSelectedWord)
