@@ -20,18 +20,18 @@ class Program
         int wordLength = selectedWord.Length;
         string wordCharacters = "";
 
-        wordCharacters = new String('…', wordLength);
+        wordCharacters = new String('_', wordLength);
         Console.WriteLine($"The secret word is within: {wordCharacters}");
 
         //Initializing variables
         const int LIMIT = 15;
-        const int START = 0;
+        const int START = 1;
         int position = 0;
         char userInputletter;
         char guessedLetter;
         int check = 0;
 
-        for (int i = START; i < LIMIT; i++)
+        for (int i = START; i <= LIMIT; i++)
         {
             bool presentLetter = false;
             Console.WriteLine("Hey enter your guess letter");
@@ -43,6 +43,7 @@ class Program
             else
             {
                 Console.WriteLine($"\nYou must enter only letters, you guessed {userInputletter}");
+                Console.WriteLine($"You guessed {i} times. you are now remained with {LIMIT - i} guesses");
                 continue;
             }
 
@@ -64,19 +65,22 @@ class Program
                 Console.WriteLine($"The letter {guessedLetter} is in the secret word");
                 char[] currentCharacters = wordCharacters.ToCharArray();
                 currentCharacters[position] = guessedLetter;
-                wordCharacters = string.Concat(currentCharacters);
+                wordCharacters = new string(currentCharacters);
                 Console.WriteLine($"The progress is {wordCharacters}");
             }
 
             if (wordCharacters == lowerCaseSelectedWord)
             {
-                Console.WriteLine($"You guessed  {selectedWord} and it is the correct word, Conglatulation");
+                Console.WriteLine($"You guessed {selectedWord} and it is the correct word, Conglatulation");
                 return;
             }
-
-            if (i == LIMIT)
+            if(i<LIMIT)
             {
-                Console.WriteLine($"This is your last guess You guess");
+                Console.WriteLine($"You guessed {i} times. you are now remained with {LIMIT-i} guesses");
+            }
+            if (i == LIMIT )
+            {
+                Console.WriteLine($"That was your last guess");
             }
         }
 
