@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace HangmanProject;
@@ -18,10 +19,9 @@ class Program
         string lowerCaseSelectedWord = selectedWord.ToLower();
         //check the lenghth of the selected word
         int wordLength = selectedWord.Length;
-        string wordCharacters = "";
-
-        wordCharacters = new String('_', wordLength);
+        string wordCharacters = new string('_', wordLength);
         Console.WriteLine($"The secret word is within: {wordCharacters}");
+        char[] currentCharacters = wordCharacters.ToCharArray();
 
         //Initializing variables
         const int LIMIT = 15;
@@ -63,13 +63,11 @@ class Program
             if (presentLetter)
             {
                 Console.WriteLine($"The letter {guessedLetter} is in the secret word");
-                char[] currentCharacters = wordCharacters.ToCharArray();
                 currentCharacters[position] = guessedLetter;
-                wordCharacters = new string(currentCharacters);
-                Console.WriteLine($"The progress is {wordCharacters}");
+                Console.WriteLine(currentCharacters);
             }
-
-            if (wordCharacters == lowerCaseSelectedWord)
+            bool isEqual = new string(currentCharacters) == lowerCaseSelectedWord;
+            if (isEqual)
             {
                 Console.WriteLine($"You guessed {selectedWord} and it is the correct word, Conglatulation");
                 return;
