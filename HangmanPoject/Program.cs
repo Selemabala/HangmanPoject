@@ -83,6 +83,5 @@ class Program
         }
 
         Console.WriteLine($"The word is {selectedWord}.");
-        return;
     }
 }
