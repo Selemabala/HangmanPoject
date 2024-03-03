@@ -1,4 +1,5 @@
 ﻿using System;
+using Internal;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -8,6 +9,9 @@ class Program
 {
     static void Main(string[] args)
     {
+        const int LIMIT = 15;
+        const int START = 1;
+
         Console.WriteLine("Hello, Welcome to Hangman game!");
         Console.WriteLine("I hope you will enjoy this game");
 
@@ -24,12 +28,9 @@ class Program
         char[] currentCharacters = wordCharacters.ToCharArray();
 
         //Initializing variables
-        const int LIMIT = 15;
-        const int START = 1;
         int position = 0;
         char userInputletter;
         char guessedLetter;
-        int check = 0;
 
         for (int i = START; i <= LIMIT; i++)
         {
@@ -51,6 +52,7 @@ class Program
             for (check = 0; check < wordLength; check++)
             {
                 if (lowerCaseSelectedWord[check] == guessedLetter)
+                int check = 0;
                 {
                     position = check;
                     presentLetter = true;
