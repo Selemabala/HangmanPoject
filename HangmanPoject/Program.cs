@@ -1,9 +1,4 @@
-﻿using System;
-using Internal;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-
-namespace HangmanProject;
+﻿namespace HangmanProject;
 
 class Program
 {
@@ -48,11 +43,11 @@ class Program
                 continue;
             }
 
+            int check = 0;
             guessedLetter = char.ToLower(userInputletter);
             for (check = 0; check < wordLength; check++)
             {
                 if (lowerCaseSelectedWord[check] == guessedLetter)
-                int check = 0;
                 {
                     position = check;
                     presentLetter = true;
